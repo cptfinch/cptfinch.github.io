@@ -95,9 +95,25 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.button {
+    color: chocolate;
+    border-radius: 5%;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: darkslateblue; 
+     
+}
 
 
-
+p{
+    text-align: right;
+    font: large, bold, italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: darkgray;
+    border: darkorange;
+    border-width: 1px;
+    padding: 4px; 
+}
 
 
 
