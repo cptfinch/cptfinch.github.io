@@ -1,10 +1,10 @@
 {
-  "title": "The Galactus Herald",
+  "title": "Your Blog Name",
   "url": "https://example.com/",
   "language": "en",
-  "description": "I am writing about my experiences as a human being.",
+  "description": "I am writing about my experiences as a naval navel-gazer.",
   "feed": {
-    "subtitle": "I am writing about my experiences as a human being.",
+    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "id": "https://example.com/"
@@ -14,8 +14,8 @@
     "url": "https://example.com/feed/feed.json"
   },
   "author": {
-    "name": "Galactus Herald",
-    "email": "galactusherald@nesteddev.com",
+    "name": "Your Name Here",
+    "email": "youremailaddress@example.com",
     "url": "https://example.com/about-me/"
   }
 }
