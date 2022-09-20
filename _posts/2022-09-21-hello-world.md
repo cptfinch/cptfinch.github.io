@@ -1,10 +1,9 @@
 ---
 layout: post
-title: "POST TITLE"
+title: "Shouldice Method"
 date: 2022-09-21 00:22:00 -0000
 categories: Health 
 ---
-
 Journal: J Minim Access Surg. 2006 Sep; 2(3): 124–128.
 doi: 10.4103/0972-9941.27723
 PMCID: PMC2999770
