@@ -1,0 +1,21 @@
+{
+  "title": "The Galactus Herald",
+  "url": "https://example.com/",
+  "language": "en",
+  "description": "I am writing about my experiences as a human being.",
+  "feed": {
+    "subtitle": "I am writing about my experiences as a human being.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://example.com/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://example.com/feed/feed.json"
+  },
+  "author": {
+    "name": "Galactus Herald",
+    "email": "galactusherald@nesteddev.com",
+    "url": "https://example.com/about-me/"
+  }
+}
