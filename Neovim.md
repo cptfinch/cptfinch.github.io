@@ -1,0 +1,83 @@
+# Set up your isolated environment
+
+I could do this with my own set up without having to rely on the .config and .local dirs ; such as neovim-beginner does by alpha2phi
+
+but this gives XDG_DATA_HOME and XDG_CONFIG_HOME different values -- i.e. messing with standard env vars.. 
+
+there must be a better way with nix, to learn later. 
+
+git clone the repo
+
+source ./install.sh 
+
+nvb
+
+```bash
+#!/usr/bin/sh
+NVIM_BEGINNER=~/.config/nvim-beginner
+export NVIM_BEGINNER
+rm -rf $NVIM_BEGINNER
+mkdir -p $NVIM_BEGINNER/share
+mkdir -p $NVIM_BEGINNER/nvim
+stow --restow --target=$NVIM_BEGINNER/nvim .
+alias nvb='XDG_DATA_HOME=$NVIM_BEGINNER/share XDG_CONFIG_HOME=$NVIM_BEGINNER nvim'
+```
+
+
+use a different folder (~/.config/nvim-beginner) for Neovim configuration. 
+
+If you want to use the default location (:h xdg), 
+change NVIM_BEGINNER value to ~/.config.
+
+XDG_CONFIG_HOME is the location to keep the Neovim configuration files.
+
+XDG_DATA_HOME is the location to keep the data, including all our downloaded plugins.
+
+
+# to learn
+
+Filetype plugin :
+
+:h ftplugin
+
+
+
+# Archive
+
+Our folder structure should look like this (:h rtp).
+
+Folder Tree
+init.lua
+Our init.lua is simple. It invokesplugins.lua under the lua (:h lua-require and :h lua) folder.
+
+require("plugins").setup()
+plugins.lua
+plugins.lua is where we start to configure Neovim.
+
+
+plugins.lua
+Let’s go through the code.
+
+packer_bootstrap is used to indicate if this is the first time we bootstrap Neovim without any configurations.
+
+By default packer.nvim opens the status window in a vertical split. We specifically configure it to use a floating window.
+
+packer_init is the function to download and install packer.nvim in the XDG_CONFIG_DATA folder.
+
+packadd(:h packadd) is used to load the packer.nvim package immediately after download.
+
+The autocmd for plugins.lua is to compile the file immediately after any changes are saved to generate the compiled loader file (:h packer-commands-compile).
+
+plugins function is where we configure all the plugins. Besides packer.nvim, we install a color scheme, startup screen, and Git.
+
+For first-time installation, packer.nvim shall sync and download all plugins automatically.
+
+Check out this article for other color schemes you can use.
+
+12 Neovim Themes with Tree-sitter Support
+Let’s check out some great Neovim themes with tree-sitter support!
+alpha2phi.medium.com
+autocomplete
+snippets
+language server provider
+which key 
