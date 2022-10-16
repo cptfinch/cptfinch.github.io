@@ -1,3 +1,9 @@
+---
+layout: post
+title:  "Nix flakes"
+---
+
+
 # nix flakes
 
 List requirements in flake.nix ;  an attribute set . 

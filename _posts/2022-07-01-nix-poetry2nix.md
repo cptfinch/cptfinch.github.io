@@ -1,3 +1,9 @@
+---
+layout: post
+title:  "Learning poetry2nix"
+---
+
+
 # How-to guides
 
 Package and deploy Python apps faster with Poetry and Nix This is a short (11 minutes) video tutorial by Steve Purcell from Tweag walking you through how to get started with a small web development project.

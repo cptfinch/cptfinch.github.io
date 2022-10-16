@@ -1,3 +1,8 @@
+---
+layout: post
+title:  "Start an Eleventy site"
+---
+
 npm init 
 
 npm install --save-dev @11ty/eleventy

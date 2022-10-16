@@ -1,3 +1,7 @@
+---
+layout: post
+title:  "Language server protocol"
+---
 
 An programming language editor (IDE) has a number of features: 
 

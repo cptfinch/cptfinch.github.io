@@ -1,3 +1,7 @@
+---
+layout: post
+title:  "Putting shell scripts in to the Nix store"
+---
 
 non flake:
 

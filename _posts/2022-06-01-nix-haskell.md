@@ -1,3 +1,9 @@
+---
+layout: post
+title:  "Nix and Haskell"
+---
+
+
 new project, 
 
 create a cabal file. 

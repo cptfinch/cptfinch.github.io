@@ -1,4 +1,7 @@
-
+---
+layout: post
+title:  "Nix before flakes"
+---
 
 nix-repl> with donkey; ({cat, dog, ... }: let blah= "blah1"; in {cat2="${cat.kitten} yeah"; dog2="${dog} yeah"; inherit blah donkey;}) {cat={kitten="mew mew";}; d{ blah = "blah1"; cat2 = "mew mew yeah"; dog2 = "woof1 yeah"; donkey = "eeawwww"; }
 
