@@ -6,7 +6,8 @@ title:  "Start an Eleventy site"
 npm init 
 
 npm install --save-dev @11ty/eleventy
-(i maybe don't need --save-dev)
+
+(I maybe don't need --save-dev)
 
 npx @11ty/eleventy
 
