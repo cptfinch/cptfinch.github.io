@@ -13,33 +13,63 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: The Galactus Herald
+title: Christopher Finch - Developer & Systems Engineer
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Thoughts on software development and generally anything of interest. Hopefully useful too! 
+  Building real-world solutions from healthcare systems to developer tools. 
+  Showcasing projects in React, Node.js, Python, and modern web technologies.
+  Technical blog covering Nix, development workflows, and system administration.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://cptfinch.github.io" # the base hostname & protocol for your site
 twitter_username: capfinch
-github_username:  cptfinch
+github_username: cptfinch
 
 # Build settings
 markdown: kramdown
 theme: minima
 
-  #remote_theme: "mmistakes/minimal-mistakes@4.24.0"
-
+# Plugins
 plugins:
   - jekyll-feed
-    #  - jekyll-include-cache
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Custom variables
+author:
+  name: Christopher Finch
+  bio: Developer & Systems Engineer specializing in healthcare technology, developer tools, and open source solutions
+  location: "Remote"
+  
+# Social links
+social:
+  - title: GitHub
+    url: https://github.com/cptfinch
+  - title: Twitter
+    url: https://twitter.com/capfinch
+  - title: Knowledge Base
+    url: https://cptfinch.github.io/knowledge-base/
+
+# Projects (for future use)
+featured_projects:
+  - name: "Proton Therapy Procedures App"
+    description: "Digital solution for managing proton therapy site procedures"
+    tech: "React.js, Node.js, Express, MongoDB"
+    url: "https://github.com/cptfinch/nix-home-config/tree/main/operation-scenarios-app/proton-procedure-app"
+  - name: "Charity Accounting Software"
+    description: "Comprehensive accounting system for charities"
+    tech: "Next.js 14, TypeScript, MongoDB, Prisma"
+    url: "https://github.com/cptfinch/nix-home-config/tree/main/charity-software/nextjs-charity"
+  - name: "IBA Tools System"
+    description: "CLI tools for system and service management"
+    tech: "Node.js, TypeScript, MongoDB"
+    url: "https://github.com/cptfinch/nix-home-config/tree/main/cli-frontends"
