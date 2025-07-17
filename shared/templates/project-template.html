@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{PROJECT_NAME}} - Christopher Finch</title>
+    <meta name="description" content="{{PROJECT_DESCRIPTION}}">
+    
+    <!-- Shared CSS from main site -->
+    <link rel="stylesheet" href="https://cptfinch.github.io/shared/css/project-styles.css">
+    
+    <!-- Project-specific CSS (optional) -->
+    <style>
+        /* Add any project-specific styles here */
+    </style>
+</head>
+<body>
+    <!-- Header Container - Will be populated by JavaScript -->
+    <div id="header-container">
+        <!-- Fallback header if JavaScript is disabled -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <a href="/" class="logo">Christopher Finch</a>
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/knowledge-base/">Knowledge Base</a></li>
+                            <li><a href="/machine_qc/">Machine QC</a></li>
+                            <li><a href="/gafchromic/">GafChromic</a></li>
+                            <li><a href="/#projects">Projects</a></li>
+                            <li><a href="/#contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>{{PROJECT_NAME}}</h1>
+            <p>{{PROJECT_HERO_DESCRIPTION}}</p>
+            <a href="{{GITHUB_URL}}" class="cta-button">View on GitHub</a>
+            <a href="#overview" class="cta-button">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Overview Section -->
+            <section class="section" id="overview">
+                <h2>Overview</h2>
+                <p class="section-description">
+                    {{PROJECT_OVERVIEW}}
+                </p>
+                
+                <div class="features-grid">
+                    <!-- Replace with project-specific features -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">Feature 1</h3>
+                        <p class="feature-description">Description of feature 1.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3 class="feature-title">Feature 2</h3>
+                        <p class="feature-description">Description of feature 2.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔬</div>
+                        <h3 class="feature-title">Feature 3</h3>
+                        <p class="feature-description">Description of feature 3.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technology Stack -->
+            <section class="section">
+                <h2>Technology Stack</h2>
+                <div class="tech-stack">
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <h4>{{TECH_1_NAME}}</h4>
+                            <p>{{TECH_1_DESCRIPTION}}</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>{{TECH_2_NAME}}</h4>
+                            <p>{{TECH_2_DESCRIPTION}}</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>{{TECH_3_NAME}}</h4>
+                            <p>{{TECH_3_DESCRIPTION}}</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>{{TECH_4_NAME}}</h4>
+                            <p>{{TECH_4_DESCRIPTION}}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Additional sections as needed -->
+            
+        </div>
+    </main>
+
+    <!-- Footer Container - Will be populated by JavaScript -->
+    <div id="footer-container">
+        <!-- Fallback footer if JavaScript is disabled -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 Christopher Finch. {{PROJECT_NAME}} - Medical Physics & Software Development</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Shared JavaScript from main site -->
+    <script src="https://cptfinch.github.io/shared/js/project-nav.js"></script>
+    
+    <!-- Initialize the page -->
+    <script>
+        // Initialize with project-specific settings
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeProjectPage({
+                activeProject: '{{PROJECT_ID}}', // e.g., 'machine_qc', 'gafchromic'
+                projectName: '{{PROJECT_NAME}}'
+            });
+        });
+    </script>
+</body>
+</html> 
