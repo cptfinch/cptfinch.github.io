@@ -7,6 +7,11 @@ A modern, fast, and elegant personal website showcasing projects and technical k
 - **Main Site**: https://cptfinch.github.io - Project showcase landing page
 - **Knowledge Base**: https://cptfinch.github.io/knowledge-base/ - Curated technical guides
 
+### 🚀 Project Showcase Sites
+- **Machine QC**: https://cptfinch.github.io/machine_qc/ - Linear accelerator QC system
+- **GafChromic Dosimetry**: https://cptfinch.github.io/gafchromic/ - Film dosimetry tools
+- **More projects coming soon...**
+
 ## 🏗️ Architecture Overview
 
 ### **Simple & Fast Design Philosophy**
@@ -21,8 +26,27 @@ cptfinch.github.io/
 ├── index.html              # Main landing page
 ├── knowledge-base/
 │   └── index.html          # Knowledge base application
+├── shared/                 # Shared styling system for project sites
+│   ├── css/
+│   │   └── project-styles.css
+│   ├── js/
+│   │   └── project-nav.js
+│   ├── templates/
+│   │   └── project-template.html
+│   └── README.md
 ├── .gitignore
 └── README.md              # This file
+```
+
+### **Project Repositories** (Separate repos with GitHub Pages)
+```
+machine_qc/                 # Machine QC Rails application
+├── index.html             # GitHub Pages showcase (gh-pages branch)
+└── [Rails application files]
+
+gafchromic/                 # GafChromic dosimetry tools
+├── index.html             # GitHub Pages showcase (gh-pages branch)
+└── [Python/Mathematica files]
 ```
 
 ### **Content Source**
@@ -155,6 +179,53 @@ git push origin master
 
 The article will be live within minutes!
 
+## 🎨 Shared Styling System
+
+### **Overview**
+A comprehensive styling system that ensures consistent design across all project showcase pages while maintaining easy maintenance.
+
+### **How It Works**
+1. **Shared CSS** - All project sites link to `https://cptfinch.github.io/shared/css/project-styles.css`
+2. **Shared JavaScript** - Common navigation via `https://cptfinch.github.io/shared/js/project-nav.js`
+3. **Template System** - Ready-to-use template in `shared/templates/project-template.html`
+
+### **Benefits**
+- ✅ **Consistent Branding** - All projects use identical styling
+- ✅ **Easy Maintenance** - Update one file, affects all projects
+- ✅ **Fast Development** - Template speeds up new project pages
+- ✅ **Automatic Navigation** - Add new projects once, appears everywhere
+
+### **Creating New Project Sites**
+
+#### **Step 1: Use the Template**
+```bash
+# Copy template to your project repository
+cp shared/templates/project-template.html your-project/index.html
+```
+
+#### **Step 2: Replace Placeholders**
+Edit the template and replace:
+- `{{PROJECT_NAME}}` - Your project name
+- `{{PROJECT_DESCRIPTION}}` - Meta description  
+- `{{PROJECT_HERO_DESCRIPTION}}` - Hero section text
+- `{{GITHUB_URL}}` - GitHub repository link
+- `{{PROJECT_ID}}` - Project identifier (e.g., 'machine_qc')
+
+#### **Step 3: Set Up GitHub Pages**
+1. Create `gh-pages` branch in your project repository
+2. Add `index.html` and `.nojekyll` files
+3. Enable GitHub Pages in repository settings (Source: gh-pages branch)
+
+#### **Step 4: Update Navigation**
+Add your project to the shared navigation by editing `shared/js/project-nav.js`
+
+### **Current Project Sites**
+- **Machine QC** - Quality control for medical linear accelerators
+- **GafChromic Dosimetry** - Film dosimetry analysis tools
+- **Template Ready** - For TG-43, SlicerRT, and other projects
+
+For detailed documentation, see: [shared/README.md](shared/README.md)
+
 ## 🚀 Deployment Process
 
 ### **Automatic Deployment**
@@ -270,18 +341,29 @@ Articles are fetched from your `nix-home-config` repository in real-time.
 
 ## 📈 Future Enhancements
 
-### **Potential Improvements**
-- **Search Functionality** - Add client-side search
-- **Dark Mode** - Implement theme switching
-- **RSS Feed** - Generate feed from articles
-- **Comments** - Add commenting system
-- **Analytics** - Integrate Google Analytics or similar
+### **Portfolio Expansion**
+- **More Project Sites** - TG-43, SlicerRT, Synapse_CoR showcase pages
+- **Project Categories** - Organize projects by domain (medical physics, web dev, etc.)
+- **Project Search** - Search across all project sites
+- **Project Analytics** - Track engagement across portfolio
 
-### **Content Expansion**
-- **More Categories** - Add infrastructure, tutorials, etc.
+### **Shared System Improvements**
+- **Version Management** - CSS/JS versioning for cache control
+- **Build Process** - SCSS compilation and minification
+- **Component Library** - Expand reusable components
+- **Dark Mode** - Portfolio-wide theme switching
+
+### **Knowledge Base Enhancements**
+- **Search Functionality** - Add client-side search
+- **RSS Feed** - Generate feed from articles
 - **Series Support** - Link related articles together
-- **Author Pages** - Support multiple authors
-- **Archive Pages** - Organize content by date
+- **Comments** - Add commenting system
+
+### **Technical Improvements**
+- **Analytics** - Integrate Google Analytics across all sites
+- **Performance** - Further optimize loading speeds
+- **SEO** - Enhanced meta tags and structured data
+- **Accessibility** - WCAG compliance improvements
 
 ## 📝 Maintenance Checklist
 
