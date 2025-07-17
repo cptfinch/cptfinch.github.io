@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base - Christopher Finch</title>
+    <meta name="description" content="Curated technical guides and documentation covering development, infrastructure, and best practices">
+    
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        .main {
+            padding: 4rem 0;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        
+        .category-list {
+            list-style: none;
+        }
+        
+        .category-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-list a {
+            text-decoration: none;
+            color: #666;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .category-list a:hover,
+        .category-list a.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        /* Content Area */
+        .content {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 500px;
+        }
+        
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .article-card {
+            border: 1px solid #e1e4e8;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .article-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            background: #f1f3f4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+        
+        /* Article Content */
+        .article-content {
+            display: none;
+        }
+        
+        .article-content.active {
+            display: block;
+        }
+        
+        .article-content h1 {
+            color: #333;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .article-content h2 {
+            color: #444;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.5rem;
+        }
+        
+        .article-content h3 {
+            color: #555;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .article-content ul, .article-content ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-content pre {
+            background: #f6f8fa;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .article-content code {
+            background: #f6f8fa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .article-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            transition: background 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: #5a6fd8;
+        }
+        
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">Christopher Finch</a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/knowledge-base/">Knowledge Base</a></li>
+                        <li><a href="/#projects">Projects</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Knowledge Base</h1>
+            <p>Curated technical guides, tutorials, and documentation covering development, infrastructure, and best practices</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <h3>Categories</h3>
+                    <ul class="category-list">
+                        <li><a href="#" class="category-link active" data-category="all">All Articles</a></li>
+                        <li><a href="#" class="category-link" data-category="package-managers">Package Managers</a></li>
+                        <li><a href="#" class="category-link" data-category="development">Development</a></li>
+                        <li><a href="#" class="category-link" data-category="infrastructure">Infrastructure</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Content Area -->
+                <div class="content">
+                    <!-- Article List -->
+                    <div id="article-list" class="article-list">
+                        <div class="article-grid">
+                            <!-- Articles will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Article Content -->
+                    <div id="article-content" class="article-content">
+                        <!-- Individual article content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Configuration
+        const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/cptfinch/nix-home-config/dev/knowledge-base/';
+        
+        // Articles data - this would be populated from your curated content
+        const articles = [
+            {
+                id: 'package-managers',
+                title: 'Package Managers: A Comprehensive Guide',
+                description: 'Essential tools for managing dependencies in modern software development. Covers Bundler for Ruby and npm for JavaScript/Node.js.',
+                category: 'package-managers',
+                tags: ['development', 'tools', 'dependencies'],
+                file: 'package-managers/package-managers.md',
+                date: '2025-01-15'
+            },
+            {
+                id: 'yaml-front-matter',
+                title: 'YAML Front Matter: Standard Fields and Usage Guide',
+                description: 'Comprehensive reference for YAML front matter fields used across static site generators and note-taking systems.',
+                category: 'package-managers',
+                tags: ['documentation', 'yaml', 'static-sites'],
+                file: 'package-managers/yaml-front-matter-guide.md',
+                date: '2025-01-15'
+            },
+            {
+                id: 'bundler-guide',
+                title: 'Bundler Guide for Ruby Development',
+                description: 'Complete guide to using Bundler for Ruby dependency management and project setup.',
+                category: 'package-managers',
+                tags: ['ruby', 'bundler', 'development'],
+                file: 'package-managers/bundler-guide.md',
+                date: '2025-01-15'
+            },
+            {
+                id: 'jekyll-guide',
+                title: 'Jekyll Static Site Generator Guide',
+                description: 'Comprehensive guide to Jekyll covering installation, setup, basic usage, and understanding of Ruby gems.',
+                category: 'package-managers',
+                tags: ['jekyll', 'static-sites', 'ruby'],
+                file: 'package-managers/jekyll-guide.md',
+                date: '2025-01-15'
+            }
+        ];
+
+        // State
+        let currentCategory = 'all';
+        let currentArticle = null;
+
+        // DOM Elements
+        const articleList = document.getElementById('article-list');
+        const articleContent = document.getElementById('article-content');
+        const categoryLinks = document.querySelectorAll('.category-link');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderArticleList();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Category links
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.dataset.category;
+                    setActiveCategory(category);
+                    renderArticleList();
+                });
+            });
+        }
+
+        function setActiveCategory(category) {
+            currentCategory = category;
+            categoryLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.category === category);
+            });
+        }
+
+        function renderArticleList() {
+            const filteredArticles = currentCategory === 'all' 
+                ? articles 
+                : articles.filter(article => article.category === currentCategory);
+
+            const articleGrid = articleList.querySelector('.article-grid');
+            articleGrid.innerHTML = filteredArticles.map(article => `
+                <div class="article-card" onclick="loadArticle('${article.id}')">
+                    <h3 class="article-title">${article.title}</h3>
+                    <p class="article-description">${article.description}</p>
+                    <div class="article-meta">
+                        <div class="article-tags">
+                            ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <span class="article-date">${formatDate(article.date)}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Show article list, hide content
+            articleList.style.display = 'block';
+            articleContent.classList.remove('active');
+        }
+
+        async function loadArticle(articleId) {
+            const article = articles.find(a => a.id === articleId);
+            if (!article) return;
+
+            // Show loading state
+            articleContent.innerHTML = '<div class="loading">Loading article...</div>';
+            articleContent.classList.add('active');
+            articleList.style.display = 'none';
+
+            try {
+                // Fetch markdown content
+                const response = await fetch(GITHUB_RAW_BASE + article.file);
+                const markdown = await response.text();
+
+                // Parse markdown
+                const html = marked.parse(markdown);
+
+                // Render article
+                articleContent.innerHTML = `
+                    <a href="#" class="back-button" onclick="showArticleList()">← Back to Articles</a>
+                    <div class="article-header">
+                        <h1>${article.title}</h1>
+                        <div class="article-meta">
+                            <div class="article-tags">
+                                ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                            <span class="article-date">${formatDate(article.date)}</span>
+                        </div>
+                    </div>
+                    <div class="article-body">
+                        ${html}
+                    </div>
+                `;
+
+                // Highlight code blocks
+                hljs.highlightAll();
+
+                currentArticle = article;
+            } catch (error) {
+                console.error('Error loading article:', error);
+                articleContent.innerHTML = `
+                    <a href="#" class="back-button" onclick="showArticleList()">← Back to Articles</a>
+                    <div class="error">
+                        <h2>Error Loading Article</h2>
+                        <p>Sorry, there was an error loading this article. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function showArticleList() {
+            articleList.style.display = 'block';
+            articleContent.classList.remove('active');
+            currentArticle = null;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        // Handle browser back/forward
+        window.addEventListener('popstate', function(e) {
+            if (e.state && e.state.article) {
+                loadArticle(e.state.article);
+            } else {
+                showArticleList();
+            }
+        });
+    </script>
+</body>
+</html> 
